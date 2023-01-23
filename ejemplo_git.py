@@ -354,3 +354,25 @@ rmse = mean_squared_error(
 print("")
 print(f"El error (rmse) de test es: {rmse}")
 
+# Normalidad de los residuos D'Agostino's K-squared test PARA RAMA PRUEBA
+# ==============================================================================
+k2, p_value = stats.normaltest(residuos_train)
+print(f"Estadítico= {k2}, p-value = {p_value}")
+
+# Predicciones con intervalo de confianza PARA RAMA PRUEBA 
+# ==============================================================================
+predicciones = modelo.get_prediction(exog = X_train).summary_frame(alpha=0.05)
+predicciones.head(4)
+
+# Error de test del modelo PARA RAMA PRUEBA 
+# ==============================================================================
+X_test = sm.add_constant(X_test, prepend=True)
+predicciones = modelo.predict(exog = X_test)
+rmse = mean_squared_error(
+        y_true  = y_test,
+        y_pred  = predicciones,
+        squared = False
+       )
+print("")
+print(f"El error (rmse) de test es: {rmse}")
+
