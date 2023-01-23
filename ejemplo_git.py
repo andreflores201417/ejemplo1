@@ -33,7 +33,7 @@ warnings.filterwarnings('ignore')
 
 # Datos
 # ==============================================================================
-df = pd.read_csv('C:/Users/PaulinaCastillo/OneDrive - Asesorías Términus Limitada/Documentos/profet/2_meses.csv', delimiter=';')
+df = pd.read_csv('2_meses.csv', delimiter=';')
 df.head()
 
 # Gráfico
@@ -41,17 +41,17 @@ df.head()
 fig, ax = plt.subplots(figsize=(6, 3.84))
 
 df.plot(
-    x    = 'cant_tx',
-    y    = 'cpu_prom_carga_tr',
+    x    = 'xxx',
+    y    = 'yyyy',
     c    = 'firebrick',
     kind = "scatter",
     ax   = ax
 )
-ax.set_title('Distribución Promedio Carga de Trabajo de CPU y Cantidad de Transacciones');
+ax.set_title('sin titulo');
 
 # Correlación lineal entre las dos variables
 # ==============================================================================
-corr_test = pearsonr(x = df['cant_tx'], y =  df['cpu_prom_carga_tr'])
+corr_test = pearsonr(x = df['xxx'], y =  df['yyyy'])
 print("=======================================================")
 print("Coeficiente de correlación de Pearson: ", corr_test[0])
 print("=======================================================")
@@ -59,8 +59,8 @@ print("=======================================================")
 
 # División de los datos en train y test
 # ==============================================================================
-X = df[['cant_tx']]
-y = df['cpu_prom_carga_tr']
+X = df[['xxx']]
+y = df['yyyy']
 
 X_train, X_test, y_train, y_test = train_test_split(
                                         X.values.reshape(-1,1),
